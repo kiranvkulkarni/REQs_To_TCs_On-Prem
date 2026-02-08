@@ -1,6 +1,6 @@
 # Camera Test Generation System
 
-This project automates the generation of test cases for camera applications using AI and computer vision techniques. It processes screenshots of camera UIs, extracts metadata, generates Gherkin test cases, and executes them on actual devices.
+This project automates the generation of test cases for camera applications using AI and computer vision techniques. It processes screenshots of camera UIs using the qwen2.5vl:32b vision model (via Ollama), extracts metadata, generates Gherkin test cases, and executes them on actual devices.
 
 ## Table of Contents
 - [Features](#features)
@@ -15,8 +15,8 @@ This project automates the generation of test cases for camera applications usin
 
 ## Features
 
-- **Screenshot Ingestion**: Processes camera app screenshots to extract UI metadata
-- **Test Case Generation**: Uses LLMs and rule-based systems to generate Gherkin test cases
+- **Screenshot Ingestion**: Processes camera app screenshots using qwen2.5vl:32b (Ollama) to extract UI metadata
+- **Test Case Generation**: Uses LLMs (Ollama) and rule-based systems to generate Gherkin test cases
 - **Test Execution**: Runs tests on Android devices using uiautomator2
 - **Reporting**: Generates detailed HTML reports with screenshots and videos
 - **Alerting**: Monitors test execution metrics and sends alerts for failures
@@ -95,12 +95,13 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
 ## Usage
 
 ### 1. Add Screenshots
-Place camera app screenshots in the `data/input_screenshots` directory.
+Place camera app screenshots in the `data/input_screenshots` directory. The ingestion module will use the qwen2.5vl:32b vision model (Ollama) to analyze and extract state machine logic from these images.
 
 ### 2. Generate Test Cases
 ```bash
 # Process screenshots and generate test cases
 python src/ingestion/processor.py
+# (Requires Ollama running locally with the qwen2.5vl:32b model pulled)
 ```
 
 ### 3. Execute Tests
@@ -176,9 +177,10 @@ The system generates comprehensive reports with:
    - Check device serials in config/settings.yaml
    - Verify app_package and app_activity are correct
 
-2. **LLM generation fails**
-   - Ensure Ollama is running and the specified model is available
-   - Check LLM configuration in config/settings.yaml
+2. **Vision model or LLM generation fails**
+   - Ensure Ollama is running and the qwen2.5vl:32b model is available locally
+   - Pull the model with: `ollama pull qwen2.5vl:32b`
+   - Check LLM and vision model configuration in config/settings.yaml
 
 3. **Frontend not loading**
    - Ensure backend is running on port 8000

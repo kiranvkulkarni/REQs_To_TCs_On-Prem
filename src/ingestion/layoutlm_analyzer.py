@@ -4,8 +4,8 @@ import io
 import json
 
 # Configuration
-# Use 'qwen2.5-vl' (7B) for speed testing, switch to 'qwen2.5-vl:72b' for max accuracy
-MODEL_NAME = "qwen2.5-vl" 
+# Use 'qwen2.5vl:32b' (7B) for speed testing, switch to 'qwen2.5vl:32b:72b' for max accuracy
+MODEL_NAME = "qwen2.5vl:32b" 
 
 PROMPT = """
 You are an expert QA Automation Engineer. Analyze this UX Flowchart exported from Figma.

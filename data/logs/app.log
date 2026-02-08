@@ -1,0 +1,290 @@
+2026-02-08 14:32:48,508 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:32:48,508 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'ingestion'
+2026-02-08 14:32:50,509 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:32:50,509 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'ingestion'
+2026-02-08 14:32:52,510 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:32:52,510 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'ingestion'
+2026-02-08 14:32:52,510 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for ingest_screenshots
+2026-02-08 14:34:55,141 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:34:55,141 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'ingestion'
+2026-02-08 14:34:57,145 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:34:57,145 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'ingestion'
+2026-02-08 14:34:59,146 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:34:59,146 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'ingestion'
+2026-02-08 14:34:59,146 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for ingest_screenshots
+2026-02-08 14:35:27,937 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:35:27,938 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'ingestion'
+2026-02-08 14:35:29,939 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:35:29,939 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'ingestion'
+2026-02-08 14:35:31,940 - src.backend.routes.ingest - ERROR - Ingestion failed: 'ingestion'
+2026-02-08 14:35:31,940 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'ingestion'
+2026-02-08 14:35:31,940 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for ingest_screenshots
+2026-02-08 14:36:24,210 - src.backend.routes.ingest - INFO - Config loaded: {'ingestion': {'input_folder': 'data/input_screenshots', 'output_kb_folder': 'data/kb', 'supported_extensions': ['.png', '.jpg', '.jpeg'], 'max_retries': 3, 'ocr_enabled': False, 'model_name': 'microsoft/layoutlmv3-base', 'device': 'cuda', 'batch_size': 4, 'confidence_threshold': 0.7}, 'kb': {'vector_db': 'faiss', 'metadata_db': 'sqlite', 'faiss_index_type': 'FlatIP', 'sqlite_db_path': 'data/kb/kb.sqlite', 'faiss_index_path': 'data/kb/faiss.index', 'metadata_json_path': 'data/kb/metadata.json'}, 'generation': {'llm_model': 'llama3', 'llm_temperature': 0.3, 'llm_max_tokens': 1024, 'rule_priority': True, 'prompt_template': 'You are a QA Analyst generating Gherkin test cases from UI metadata.\nInput: {metadata}\nOutput: Feature and Scenarios in Gherkin syntax.\nRules:\n- Use Given/When/Then.\n- Only include what’s in metadata.\n- Prefer rule-based logic over creativity.\n- Include both English and Korean if languages include "ko".\n- Do not invent features not in metadata.\n- Use consistent terminology: "swipe down", "dimmed icon", "toast popup".\n', 'retry_count': 3, 'fallback_to_rule_only': True}, 'frontend': {'api_base_url': 'http://localhost:8000/api/v1', 'theme': 'light', 'language': 'en', 'auto_refresh': True, 'refresh_interval': 30000}, 'backend': {'host': '0.0.0.0', 'port': 8000, 'reload': False, 'cors_allowed_origins': ['http://localhost:5173'], 'api_prefix': '/api/v1'}, 'execution': {'test_dir': 'data/exports', 'report_dir': 'data/reports', 'screenshot_dir': 'data/screenshots', 'video_dir': 'data/videos', 'app_package': 'com.example.camera', 'app_activity': '.MainActivity', 'timeout': 60, 'retry_count': 2, 'parallel': True, 'device_serials': ['emulator-5554', 'emulator-5556']}, 'rejection_reasons': ['Wrong gesture interpretation', 'Missing error state', 'Over-creation (not in screenshot)', 'Incorrect language translation', 'Invalid condition logic', 'UI element misidentified'], 'export': {'group_by': 'feature', 'file_extension': '.feature', 'output_dir': 'data/exports', 'include_version': True}, 'reporting': {'format': 'html', 'template': 'default', 'include_screenshots': True, 'include_logs': True, 'prometheus_enabled': True, 'prometheus_port': 9090, 'grafana_enabled': True, 'grafana_port': 3000, 'grafana_dashboard': 'camera-testgen-dashboard.json'}, 'metrics': {'interval': 60, 'retention': '15d', 'scrape_interval': '15s'}, 'alerting': {'enabled': True, 'email': 'admin@company.com', 'slack_webhook': '', 'threshold': 5}, 'logging': {'level': 'INFO', 'file': 'data/logs/app.log', 'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'}, 'retry': {'max_attempts': 3, 'delay_seconds': 2}, 'groups': [{'name': 'camera-testgen-alerts', 'rules': [{'alert': 'HighTestFailureRate', 'expr': 'rate(camera_testgen_tests_failed[5m]) > 0.1', 'for': '1m', 'labels': {'severity': 'critical'}, 'annotations': {'summary': 'High test failure rate detected', 'description': 'More than 10% of tests failed in the last 5 minutes.'}}, {'alert': 'LongTestDuration', 'expr': 'camera_testgen_test_duration_seconds > 60', 'for': '5m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'Long test duration detected', 'description': 'Test duration exceeded 60 seconds.'}}, {'alert': 'NoTestsExecuted', 'expr': 'rate(camera_testgen_tests_total[5m]) == 0', 'for': '10m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'No tests executed', 'description': 'No tests have been executed in the last 10 minutes.'}}]}]}
+2026-02-08 14:36:24,980 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:25,254 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:25,503 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:25,751 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:25,999 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:26,273 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:26,586 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:36:26,610 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:26,695 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:27,037 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:27,310 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:36:27,332 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:27,579 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:36:27,579 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-02-08 14:36:27,598 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:27,619 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:27,873 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:36:28,051 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:28,263 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:28,611 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:28,874 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-02-08 14:36:29,120 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/vocab.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:36:29,158 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/vocab.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:29,185 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/vocab.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:29,543 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/merges.txt "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:36:29,575 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/merges.txt "HTTP/1.1 200 OK"
+2026-02-08 14:36:29,751 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/merges.txt "HTTP/1.1 200 OK"
+2026-02-08 14:36:30,084 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:30,539 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:31,138 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:36:31,529 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:36:31,553 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 14:36:31,830 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-02-08 14:36:32,153 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/xet-read-token/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4 "HTTP/1.1 200 OK"
+2026-02-08 14:37:20,947 - src.ingestion.processor - INFO - Starting ingestion from data\input_screenshots
+2026-02-08 14:37:20,947 - src.ingestion.processor - INFO - Found 4 screenshots.
+2026-02-08 14:37:20,947 - src.ingestion.processor - INFO - Processing face_detect.jpeg (Attempt 1)
+2026-02-08 14:37:20,997 - src.ingestion.processor - ERROR - ❌ Failed to process face_detect.jpeg (Attempt 1): 'words'
+2026-02-08 14:37:20,997 - src.ingestion.processor - INFO - Processing face_detect.jpeg (Attempt 2)
+2026-02-08 14:37:21,013 - src.ingestion.processor - ERROR - ❌ Failed to process face_detect.jpeg (Attempt 2): 'words'
+2026-02-08 14:37:21,013 - src.ingestion.processor - INFO - Processing face_detect.jpeg (Attempt 3)
+2026-02-08 14:37:21,034 - src.ingestion.processor - ERROR - ❌ Failed to process face_detect.jpeg (Attempt 3): 'words'
+2026-02-08 14:37:21,034 - src.ingestion.processor - CRITICAL - 💥 Giving up on face_detect.jpeg after 3 attempts.
+2026-02-08 14:37:21,034 - src.ingestion.processor - INFO - Processing FLASH.jpeg (Attempt 1)
+2026-02-08 14:37:21,056 - src.ingestion.processor - ERROR - ❌ Failed to process FLASH.jpeg (Attempt 1): 'words'
+2026-02-08 14:37:21,057 - src.ingestion.processor - INFO - Processing FLASH.jpeg (Attempt 2)
+2026-02-08 14:37:21,067 - src.ingestion.processor - ERROR - ❌ Failed to process FLASH.jpeg (Attempt 2): 'words'
+2026-02-08 14:37:21,067 - src.ingestion.processor - INFO - Processing FLASH.jpeg (Attempt 3)
+2026-02-08 14:37:21,076 - src.ingestion.processor - ERROR - ❌ Failed to process FLASH.jpeg (Attempt 3): 'words'
+2026-02-08 14:37:21,076 - src.ingestion.processor - CRITICAL - 💥 Giving up on FLASH.jpeg after 3 attempts.
+2026-02-08 14:37:21,076 - src.ingestion.processor - INFO - Processing focus_enhancer.jpeg (Attempt 1)
+2026-02-08 14:37:21,100 - src.ingestion.processor - ERROR - ❌ Failed to process focus_enhancer.jpeg (Attempt 1): 'words'
+2026-02-08 14:37:21,100 - src.ingestion.processor - INFO - Processing focus_enhancer.jpeg (Attempt 2)
+2026-02-08 14:37:21,110 - src.ingestion.processor - ERROR - ❌ Failed to process focus_enhancer.jpeg (Attempt 2): 'words'
+2026-02-08 14:37:21,110 - src.ingestion.processor - INFO - Processing focus_enhancer.jpeg (Attempt 3)
+2026-02-08 14:37:21,120 - src.ingestion.processor - ERROR - ❌ Failed to process focus_enhancer.jpeg (Attempt 3): 'words'
+2026-02-08 14:37:21,121 - src.ingestion.processor - CRITICAL - 💥 Giving up on focus_enhancer.jpeg after 3 attempts.
+2026-02-08 14:37:21,121 - src.ingestion.processor - INFO - Processing gif_brust.jpeg (Attempt 1)
+2026-02-08 14:37:21,148 - src.ingestion.processor - ERROR - ❌ Failed to process gif_brust.jpeg (Attempt 1): 'words'
+2026-02-08 14:37:21,149 - src.ingestion.processor - INFO - Processing gif_brust.jpeg (Attempt 2)
+2026-02-08 14:37:21,162 - src.ingestion.processor - ERROR - ❌ Failed to process gif_brust.jpeg (Attempt 2): 'words'
+2026-02-08 14:37:21,162 - src.ingestion.processor - INFO - Processing gif_brust.jpeg (Attempt 3)
+2026-02-08 14:37:21,177 - src.ingestion.processor - ERROR - ❌ Failed to process gif_brust.jpeg (Attempt 3): 'words'
+2026-02-08 14:37:21,177 - src.ingestion.processor - CRITICAL - 💥 Giving up on gif_brust.jpeg after 3 attempts.
+2026-02-08 14:37:21,178 - src.ingestion.processor - INFO - Ingestion completed.
+2026-02-08 14:40:50,252 - src.backend.routes.ingest - INFO - Config loaded: {'ingestion': {'input_folder': 'data/input_screenshots', 'output_kb_folder': 'data/kb', 'supported_extensions': ['.png', '.jpg', '.jpeg'], 'max_retries': 3, 'ocr_enabled': False, 'model_name': 'microsoft/layoutlmv3-base', 'device': 'cuda', 'batch_size': 4, 'confidence_threshold': 0.7}, 'kb': {'vector_db': 'faiss', 'metadata_db': 'sqlite', 'faiss_index_type': 'FlatIP', 'sqlite_db_path': 'data/kb/kb.sqlite', 'faiss_index_path': 'data/kb/faiss.index', 'metadata_json_path': 'data/kb/metadata.json'}, 'generation': {'llm_model': 'llama3', 'llm_temperature': 0.3, 'llm_max_tokens': 1024, 'rule_priority': True, 'prompt_template': 'You are a QA Analyst generating Gherkin test cases from UI metadata.\nInput: {metadata}\nOutput: Feature and Scenarios in Gherkin syntax.\nRules:\n- Use Given/When/Then.\n- Only include what’s in metadata.\n- Prefer rule-based logic over creativity.\n- Include both English and Korean if languages include "ko".\n- Do not invent features not in metadata.\n- Use consistent terminology: "swipe down", "dimmed icon", "toast popup".\n', 'retry_count': 3, 'fallback_to_rule_only': True}, 'frontend': {'api_base_url': 'http://localhost:8000/api/v1', 'theme': 'light', 'language': 'en', 'auto_refresh': True, 'refresh_interval': 30000}, 'backend': {'host': '0.0.0.0', 'port': 8000, 'reload': False, 'cors_allowed_origins': ['http://localhost:5173'], 'api_prefix': '/api/v1'}, 'execution': {'test_dir': 'data/exports', 'report_dir': 'data/reports', 'screenshot_dir': 'data/screenshots', 'video_dir': 'data/videos', 'app_package': 'com.example.camera', 'app_activity': '.MainActivity', 'timeout': 60, 'retry_count': 2, 'parallel': True, 'device_serials': ['emulator-5554', 'emulator-5556']}, 'rejection_reasons': ['Wrong gesture interpretation', 'Missing error state', 'Over-creation (not in screenshot)', 'Incorrect language translation', 'Invalid condition logic', 'UI element misidentified'], 'export': {'group_by': 'feature', 'file_extension': '.feature', 'output_dir': 'data/exports', 'include_version': True}, 'reporting': {'format': 'html', 'template': 'default', 'include_screenshots': True, 'include_logs': True, 'prometheus_enabled': True, 'prometheus_port': 9090, 'grafana_enabled': True, 'grafana_port': 3000, 'grafana_dashboard': 'camera-testgen-dashboard.json'}, 'metrics': {'interval': 60, 'retention': '15d', 'scrape_interval': '15s'}, 'alerting': {'enabled': True, 'email': 'admin@company.com', 'slack_webhook': '', 'threshold': 5}, 'logging': {'level': 'INFO', 'file': 'data/logs/app.log', 'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'}, 'retry': {'max_attempts': 3, 'delay_seconds': 2}, 'groups': [{'name': 'camera-testgen-alerts', 'rules': [{'alert': 'HighTestFailureRate', 'expr': 'rate(camera_testgen_tests_failed[5m]) > 0.1', 'for': '1m', 'labels': {'severity': 'critical'}, 'annotations': {'summary': 'High test failure rate detected', 'description': 'More than 10% of tests failed in the last 5 minutes.'}}, {'alert': 'LongTestDuration', 'expr': 'camera_testgen_test_duration_seconds > 60', 'for': '5m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'Long test duration detected', 'description': 'Test duration exceeded 60 seconds.'}}, {'alert': 'NoTestsExecuted', 'expr': 'rate(camera_testgen_tests_total[5m]) == 0', 'for': '10m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'No tests executed', 'description': 'No tests have been executed in the last 10 minutes.'}}]}]}
+2026-02-08 14:40:51,170 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:51,429 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:51,672 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:51,927 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:52,321 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:53,036 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:53,302 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:40:53,321 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:40:53,572 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:53,817 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:40:53,817 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-02-08 14:40:53,836 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:40:54,095 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:40:54,126 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 14:40:54,369 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:40:54,407 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:40:54,648 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 14:40:55,030 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-02-08 14:40:55,496 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:40:55,587 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 14:40:55,916 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-02-08 14:40:56,096 - src.ingestion.processor - INFO - Starting ingestion from data\input_screenshots
+2026-02-08 14:40:56,097 - src.ingestion.processor - INFO - Found 4 screenshots.
+2026-02-08 14:40:56,097 - src.ingestion.processor - INFO - Processing face_detect.jpeg (Attempt 1)
+2026-02-08 14:40:56,121 - src.ingestion.processor - ERROR - ❌ Failed to process face_detect.jpeg (Attempt 1): 'words'
+2026-02-08 14:40:56,122 - src.ingestion.processor - INFO - Processing face_detect.jpeg (Attempt 2)
+2026-02-08 14:40:56,134 - src.ingestion.processor - ERROR - ❌ Failed to process face_detect.jpeg (Attempt 2): 'words'
+2026-02-08 14:40:56,135 - src.ingestion.processor - INFO - Processing face_detect.jpeg (Attempt 3)
+2026-02-08 14:40:56,147 - src.ingestion.processor - ERROR - ❌ Failed to process face_detect.jpeg (Attempt 3): 'words'
+2026-02-08 14:40:56,147 - src.ingestion.processor - CRITICAL - 💥 Giving up on face_detect.jpeg after 3 attempts.
+2026-02-08 14:40:56,147 - src.ingestion.processor - INFO - Processing FLASH.jpeg (Attempt 1)
+2026-02-08 14:40:56,158 - src.ingestion.processor - ERROR - ❌ Failed to process FLASH.jpeg (Attempt 1): 'words'
+2026-02-08 14:40:56,159 - src.ingestion.processor - INFO - Processing FLASH.jpeg (Attempt 2)
+2026-02-08 14:40:56,168 - src.ingestion.processor - ERROR - ❌ Failed to process FLASH.jpeg (Attempt 2): 'words'
+2026-02-08 14:40:56,169 - src.ingestion.processor - INFO - Processing FLASH.jpeg (Attempt 3)
+2026-02-08 14:40:56,180 - src.ingestion.processor - ERROR - ❌ Failed to process FLASH.jpeg (Attempt 3): 'words'
+2026-02-08 14:40:56,180 - src.ingestion.processor - CRITICAL - 💥 Giving up on FLASH.jpeg after 3 attempts.
+2026-02-08 14:40:56,180 - src.ingestion.processor - INFO - Processing focus_enhancer.jpeg (Attempt 1)
+2026-02-08 14:40:56,190 - src.ingestion.processor - ERROR - ❌ Failed to process focus_enhancer.jpeg (Attempt 1): 'words'
+2026-02-08 14:40:56,191 - src.ingestion.processor - INFO - Processing focus_enhancer.jpeg (Attempt 2)
+2026-02-08 14:40:56,201 - src.ingestion.processor - ERROR - ❌ Failed to process focus_enhancer.jpeg (Attempt 2): 'words'
+2026-02-08 14:40:56,202 - src.ingestion.processor - INFO - Processing focus_enhancer.jpeg (Attempt 3)
+2026-02-08 14:40:56,212 - src.ingestion.processor - ERROR - ❌ Failed to process focus_enhancer.jpeg (Attempt 3): 'words'
+2026-02-08 14:40:56,212 - src.ingestion.processor - CRITICAL - 💥 Giving up on focus_enhancer.jpeg after 3 attempts.
+2026-02-08 14:40:56,212 - src.ingestion.processor - INFO - Processing gif_brust.jpeg (Attempt 1)
+2026-02-08 14:40:56,226 - src.ingestion.processor - ERROR - ❌ Failed to process gif_brust.jpeg (Attempt 1): 'words'
+2026-02-08 14:40:56,226 - src.ingestion.processor - INFO - Processing gif_brust.jpeg (Attempt 2)
+2026-02-08 14:40:56,242 - src.ingestion.processor - ERROR - ❌ Failed to process gif_brust.jpeg (Attempt 2): 'words'
+2026-02-08 14:40:56,242 - src.ingestion.processor - INFO - Processing gif_brust.jpeg (Attempt 3)
+2026-02-08 14:40:56,258 - src.ingestion.processor - ERROR - ❌ Failed to process gif_brust.jpeg (Attempt 3): 'words'
+2026-02-08 14:40:56,258 - src.ingestion.processor - CRITICAL - 💥 Giving up on gif_brust.jpeg after 3 attempts.
+2026-02-08 14:40:56,259 - src.ingestion.processor - INFO - Ingestion completed.
+2026-02-08 14:53:03,441 - src.backend.routes.ingest - INFO - Config loaded: {'ingestion': {'input_folder': 'data/input_screenshots', 'output_kb_folder': 'data/kb', 'supported_extensions': ['.png', '.jpg', '.jpeg'], 'max_retries': 3, 'ocr_enabled': False, 'model_name': 'microsoft/layoutlmv3-base', 'device': 'cuda', 'batch_size': 4, 'confidence_threshold': 0.7}, 'kb': {'vector_db': 'faiss', 'metadata_db': 'sqlite', 'faiss_index_type': 'FlatIP', 'sqlite_db_path': 'data/kb/kb.sqlite', 'faiss_index_path': 'data/kb/faiss.index', 'metadata_json_path': 'data/kb/metadata.json'}, 'generation': {'llm_model': 'llama3', 'llm_temperature': 0.3, 'llm_max_tokens': 1024, 'rule_priority': True, 'prompt_template': 'You are a QA Analyst generating Gherkin test cases from UI metadata.\nInput: {metadata}\nOutput: Feature and Scenarios in Gherkin syntax.\nRules:\n- Use Given/When/Then.\n- Only include what’s in metadata.\n- Prefer rule-based logic over creativity.\n- Include both English and Korean if languages include "ko".\n- Do not invent features not in metadata.\n- Use consistent terminology: "swipe down", "dimmed icon", "toast popup".\n', 'retry_count': 3, 'fallback_to_rule_only': True}, 'frontend': {'api_base_url': 'http://localhost:8000/api/v1', 'theme': 'light', 'language': 'en', 'auto_refresh': True, 'refresh_interval': 30000}, 'backend': {'host': '0.0.0.0', 'port': 8000, 'reload': False, 'cors_allowed_origins': ['http://localhost:5173'], 'api_prefix': '/api/v1'}, 'execution': {'test_dir': 'data/exports', 'report_dir': 'data/reports', 'screenshot_dir': 'data/screenshots', 'video_dir': 'data/videos', 'app_package': 'com.example.camera', 'app_activity': '.MainActivity', 'timeout': 60, 'retry_count': 2, 'parallel': True, 'device_serials': ['emulator-5554', 'emulator-5556']}, 'rejection_reasons': ['Wrong gesture interpretation', 'Missing error state', 'Over-creation (not in screenshot)', 'Incorrect language translation', 'Invalid condition logic', 'UI element misidentified'], 'export': {'group_by': 'feature', 'file_extension': '.feature', 'output_dir': 'data/exports', 'include_version': True}, 'reporting': {'format': 'html', 'template': 'default', 'include_screenshots': True, 'include_logs': True, 'prometheus_enabled': True, 'prometheus_port': 9090, 'grafana_enabled': True, 'grafana_port': 3000, 'grafana_dashboard': 'camera-testgen-dashboard.json'}, 'metrics': {'interval': 60, 'retention': '15d', 'scrape_interval': '15s'}, 'alerting': {'enabled': True, 'email': 'admin@company.com', 'slack_webhook': '', 'threshold': 5}, 'logging': {'level': 'INFO', 'file': 'data/logs/app.log', 'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'}, 'retry': {'max_attempts': 3, 'delay_seconds': 2}, 'groups': [{'name': 'camera-testgen-alerts', 'rules': [{'alert': 'HighTestFailureRate', 'expr': 'rate(camera_testgen_tests_failed[5m]) > 0.1', 'for': '1m', 'labels': {'severity': 'critical'}, 'annotations': {'summary': 'High test failure rate detected', 'description': 'More than 10% of tests failed in the last 5 minutes.'}}, {'alert': 'LongTestDuration', 'expr': 'camera_testgen_test_duration_seconds > 60', 'for': '5m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'Long test duration detected', 'description': 'Test duration exceeded 60 seconds.'}}, {'alert': 'NoTestsExecuted', 'expr': 'rate(camera_testgen_tests_total[5m]) == 0', 'for': '10m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'No tests executed', 'description': 'No tests have been executed in the last 10 minutes.'}}]}]}
+2026-02-08 14:53:04,246 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:04,495 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:04,743 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:04,983 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:05,229 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:05,470 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:05,731 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:53:05,769 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:53:06,023 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:06,270 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:53:06,301 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:53:06,553 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:53:06,591 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 14:53:06,840 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:53:06,860 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-02-08 14:53:07,121 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 14:53:07,368 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-02-08 14:53:07,745 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 14:53:07,764 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 14:53:08,011 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-02-08 14:53:08,185 - src.ingestion.processor - INFO - Starting ingestion from data\input_screenshots
+2026-02-08 14:53:08,185 - src.ingestion.processor - INFO - Found 4 screenshots.
+2026-02-08 14:53:08,186 - src.ingestion.processor - INFO - Processing data\input_screenshots\face_detect.jpeg (Attempt 1)
+2026-02-08 14:53:08,380 - src.ingestion.kb_writer - INFO - Metadata written for face_detect.jpeg
+2026-02-08 14:53:08,380 - src.ingestion.processor - INFO - ✅ face_detect.jpeg ingested successfully.
+2026-02-08 14:53:08,380 - src.ingestion.processor - INFO - Processing data\input_screenshots\FLASH.jpeg (Attempt 1)
+2026-02-08 14:53:08,498 - src.ingestion.kb_writer - INFO - Metadata written for FLASH.jpeg
+2026-02-08 14:53:08,498 - src.ingestion.processor - INFO - ✅ FLASH.jpeg ingested successfully.
+2026-02-08 14:53:08,500 - src.ingestion.processor - INFO - Processing data\input_screenshots\focus_enhancer.jpeg (Attempt 1)
+2026-02-08 14:53:08,614 - src.ingestion.kb_writer - INFO - Metadata written for focus_enhancer.jpeg
+2026-02-08 14:53:08,614 - src.ingestion.processor - INFO - ✅ focus_enhancer.jpeg ingested successfully.
+2026-02-08 14:53:08,614 - src.ingestion.processor - INFO - Processing data\input_screenshots\gif_brust.jpeg (Attempt 1)
+2026-02-08 14:53:08,755 - src.ingestion.kb_writer - INFO - Metadata written for gif_brust.jpeg
+2026-02-08 14:53:08,755 - src.ingestion.processor - INFO - ✅ gif_brust.jpeg ingested successfully.
+2026-02-08 14:53:08,755 - src.ingestion.processor - INFO - Ingestion completed.
+2026-02-08 14:53:30,375 - src.backend.routes.generate - ERROR - Generation failed: 'kb'
+2026-02-08 14:53:30,375 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'kb'
+2026-02-08 14:53:32,387 - src.backend.routes.generate - ERROR - Generation failed: 'kb'
+2026-02-08 14:53:32,387 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'kb'
+2026-02-08 14:53:34,388 - src.backend.routes.generate - ERROR - Generation failed: 'kb'
+2026-02-08 14:53:34,388 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'kb'
+2026-02-08 14:53:34,388 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for generate_gherkin
+2026-02-08 14:55:57,059 - src.backend.routes.generate - ERROR - Generation failed: 'State' object has no attribute 'config'
+2026-02-08 14:55:57,059 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'State' object has no attribute 'config'
+2026-02-08 14:55:59,062 - src.backend.routes.generate - ERROR - Generation failed: 'State' object has no attribute 'config'
+2026-02-08 14:55:59,062 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'State' object has no attribute 'config'
+2026-02-08 14:56:01,063 - src.backend.routes.generate - ERROR - Generation failed: 'State' object has no attribute 'config'
+2026-02-08 14:56:01,063 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'State' object has no attribute 'config'
+2026-02-08 14:56:01,063 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for generate_gherkin
+2026-02-08 14:56:54,375 - src.backend.routes.generate - ERROR - Generation failed: 'gestures'
+2026-02-08 14:56:54,375 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'gestures'
+2026-02-08 14:56:56,387 - src.backend.routes.generate - ERROR - Generation failed: 'gestures'
+2026-02-08 14:56:56,387 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'gestures'
+2026-02-08 14:56:58,388 - src.backend.routes.generate - ERROR - Generation failed: 'gestures'
+2026-02-08 14:56:58,388 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'gestures'
+2026-02-08 14:56:58,388 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for generate_gherkin
+2026-02-08 14:58:29,319 - src.backend.routes.generate - ERROR - Generation failed: 'gestures'
+2026-02-08 14:58:29,319 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'gestures'
+2026-02-08 14:58:31,326 - src.backend.routes.generate - ERROR - Generation failed: 'gestures'
+2026-02-08 14:58:31,326 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'gestures'
+2026-02-08 14:58:33,329 - src.backend.routes.generate - ERROR - Generation failed: 'gestures'
+2026-02-08 14:58:33,329 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'gestures'
+2026-02-08 14:58:33,329 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for generate_gherkin
+2026-02-08 15:01:06,004 - src.generation.generator - INFO - Generating Gherkin for face_detect.jpeg
+2026-02-08 15:01:06,004 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:01:06,004 - src.backend.routes.generate - ERROR - Generation failed: no such column: gherkin
+2026-02-08 15:01:06,004 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: no such column: gherkin
+2026-02-08 15:01:08,020 - src.generation.generator - INFO - Generating Gherkin for face_detect.jpeg
+2026-02-08 15:01:08,020 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:01:08,020 - src.backend.routes.generate - ERROR - Generation failed: no such column: gherkin
+2026-02-08 15:01:08,020 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: no such column: gherkin
+2026-02-08 15:01:10,023 - src.generation.generator - INFO - Generating Gherkin for face_detect.jpeg
+2026-02-08 15:01:10,023 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:01:10,023 - src.backend.routes.generate - ERROR - Generation failed: no such column: gherkin
+2026-02-08 15:01:10,023 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: no such column: gherkin
+2026-02-08 15:01:10,023 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for generate_gherkin
+2026-02-08 15:13:38,447 - src.generation.generator - INFO - Generating Gherkin for face_detect.jpeg
+2026-02-08 15:13:38,447 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:13:38,447 - src.backend.routes.generate - ERROR - Generation failed: no such column: status
+2026-02-08 15:13:38,447 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: no such column: status
+2026-02-08 15:13:40,456 - src.generation.generator - INFO - Generating Gherkin for face_detect.jpeg
+2026-02-08 15:13:40,456 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:13:40,456 - src.backend.routes.generate - ERROR - Generation failed: no such column: status
+2026-02-08 15:13:40,456 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: no such column: status
+2026-02-08 15:13:42,458 - src.generation.generator - INFO - Generating Gherkin for face_detect.jpeg
+2026-02-08 15:13:42,458 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:13:42,458 - src.backend.routes.generate - ERROR - Generation failed: no such column: status
+2026-02-08 15:13:42,458 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: no such column: status
+2026-02-08 15:13:42,458 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for generate_gherkin
+2026-02-08 15:15:56,431 - src.generation.generator - INFO - Generating Gherkin for face_detect.jpeg
+2026-02-08 15:15:56,431 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:15:56,443 - src.generation.generator - INFO - Generating Gherkin for FLASH.jpeg
+2026-02-08 15:15:56,443 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:15:56,447 - src.generation.generator - INFO - Generating Gherkin for focus_enhancer.jpeg
+2026-02-08 15:15:56,447 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:15:56,451 - src.generation.generator - INFO - Generating Gherkin for gif_brust.jpeg
+2026-02-08 15:15:56,451 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:15:56,454 - src.generation.generator - INFO - Generating Gherkin for FLASH.jpeg
+2026-02-08 15:15:56,454 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:15:56,457 - src.generation.generator - INFO - Generating Gherkin for FLASH.jpeg
+2026-02-08 15:15:56,457 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:15:56,461 - src.generation.generator - INFO - Generating Gherkin for FLASH.jpeg
+2026-02-08 15:15:56,461 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:15:56,464 - src.generation.generator - INFO - Generating Gherkin for FLASH.jpeg
+2026-02-08 15:15:56,464 - src.generation.generator - INFO - ✅ Rule-based generation successful.
+2026-02-08 15:16:30,771 - src.backend.routes.export - ERROR - Export failed: 'kb'
+2026-02-08 15:16:30,775 - src.backend.utils.retry - WARNING - Attempt 1 failed: 500: 'kb'
+2026-02-08 15:16:32,775 - src.backend.routes.export - ERROR - Export failed: 'kb'
+2026-02-08 15:16:32,775 - src.backend.utils.retry - WARNING - Attempt 2 failed: 500: 'kb'
+2026-02-08 15:16:34,778 - src.backend.routes.export - ERROR - Export failed: 'kb'
+2026-02-08 15:16:34,778 - src.backend.utils.retry - WARNING - Attempt 3 failed: 500: 'kb'
+2026-02-08 15:16:34,778 - src.backend.utils.retry - ERROR - 💥 All 3 attempts failed for export_feature_files
+2026-02-08 16:11:06,090 - src.backend.routes.ingest - INFO - Config loaded: {'ingestion': {'input_folder': 'data/input_screenshots', 'output_kb_folder': 'data/kb', 'supported_extensions': ['.png', '.jpg', '.jpeg'], 'max_retries': 3, 'ocr_enabled': False, 'model_name': 'microsoft/layoutlmv3-base', 'device': 'cuda', 'batch_size': 4, 'confidence_threshold': 0.7}, 'kb': {'vector_db': 'faiss', 'metadata_db': 'sqlite', 'faiss_index_type': 'FlatIP', 'sqlite_db_path': 'data/kb/kb.sqlite', 'faiss_index_path': 'data/kb/faiss.index', 'metadata_json_path': 'data/kb/metadata.json'}, 'generation': {'llm_model': 'llama3', 'llm_temperature': 0.3, 'llm_max_tokens': 1024, 'rule_priority': True, 'prompt_template': 'You are a QA Analyst generating Gherkin test cases from UI metadata.\nInput: {metadata}\nOutput: Feature and Scenarios in Gherkin syntax.\nRules:\n- Use Given/When/Then.\n- Only include what’s in metadata.\n- Prefer rule-based logic over creativity.\n- Include both English and Korean if languages include "ko".\n- Do not invent features not in metadata.\n- Use consistent terminology: "swipe down", "dimmed icon", "toast popup".\n', 'retry_count': 3, 'fallback_to_rule_only': True}, 'frontend': {'api_base_url': 'http://localhost:8000/api/v1', 'theme': 'light', 'language': 'en', 'auto_refresh': True, 'refresh_interval': 30000}, 'backend': {'host': '0.0.0.0', 'port': 8000, 'reload': False, 'cors_allowed_origins': ['http://localhost:5173'], 'api_prefix': '/api/v1'}, 'execution': {'test_dir': 'data/exports', 'report_dir': 'data/reports', 'screenshot_dir': 'data/screenshots', 'video_dir': 'data/videos', 'app_package': 'com.example.camera', 'app_activity': '.MainActivity', 'timeout': 60, 'retry_count': 2, 'parallel': True, 'device_serials': ['emulator-5554', 'emulator-5556']}, 'rejection_reasons': ['Wrong gesture interpretation', 'Missing error state', 'Over-creation (not in screenshot)', 'Incorrect language translation', 'Invalid condition logic', 'UI element misidentified'], 'export': {'group_by': 'feature', 'file_extension': '.feature', 'output_dir': 'data/exports', 'include_version': True}, 'reporting': {'format': 'html', 'template': 'default', 'include_screenshots': True, 'include_logs': True, 'prometheus_enabled': True, 'prometheus_port': 9090, 'grafana_enabled': True, 'grafana_port': 3000, 'grafana_dashboard': 'camera-testgen-dashboard.json'}, 'metrics': {'interval': 60, 'retention': '15d', 'scrape_interval': '15s'}, 'alerting': {'enabled': True, 'email': 'admin@company.com', 'slack_webhook': '', 'threshold': 5}, 'logging': {'level': 'INFO', 'file': 'data/logs/app.log', 'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'}, 'retry': {'max_attempts': 3, 'delay_seconds': 2}, 'groups': [{'name': 'camera-testgen-alerts', 'rules': [{'alert': 'HighTestFailureRate', 'expr': 'rate(camera_testgen_tests_failed[5m]) > 0.1', 'for': '1m', 'labels': {'severity': 'critical'}, 'annotations': {'summary': 'High test failure rate detected', 'description': 'More than 10% of tests failed in the last 5 minutes.'}}, {'alert': 'LongTestDuration', 'expr': 'camera_testgen_test_duration_seconds > 60', 'for': '5m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'Long test duration detected', 'description': 'Test duration exceeded 60 seconds.'}}, {'alert': 'NoTestsExecuted', 'expr': 'rate(camera_testgen_tests_total[5m]) == 0', 'for': '10m', 'labels': {'severity': 'warning'}, 'annotations': {'summary': 'No tests executed', 'description': 'No tests have been executed in the last 10 minutes.'}}]}]}
+2026-02-08 16:11:06,563 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:06,823 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:07,063 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.json "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:07,298 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:07,309 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-02-08 16:11:07,550 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:07,791 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:08,082 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 16:11:08,098 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 16:11:08,346 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:08,577 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 16:11:08,599 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-02-08 16:11:08,836 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 16:11:08,861 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 16:11:09,110 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 16:11:09,127 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-02-08 16:11:09,363 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-02-08 16:11:09,611 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/microsoft/layoutlmv3-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-02-08 16:11:10,028 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-02-08 16:11:10,050 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/layoutlmv3-base/cfbbbff0762e6aab37086fdd4739ad14fe7d5db4/config.json "HTTP/1.1 200 OK"
+2026-02-08 16:11:10,296 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/microsoft/layoutlmv3-base/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-02-08 16:11:10,568 - src.ingestion.processor - INFO - Starting ingestion from data\input_screenshots
+2026-02-08 16:11:10,568 - src.ingestion.processor - INFO - Found 4 screenshots.
+2026-02-08 16:11:10,568 - src.ingestion.processor - INFO - Processing data\input_screenshots\face_detect.jpeg (Attempt 1)
+2026-02-08 16:11:11,092 - src.ingestion.kb_writer - INFO - Metadata written for face_detect.jpeg
+2026-02-08 16:11:11,092 - src.ingestion.processor - INFO - ✅ face_detect.jpeg ingested successfully.
+2026-02-08 16:11:11,092 - src.ingestion.processor - INFO - Processing data\input_screenshots\FLASH.jpeg (Attempt 1)
+2026-02-08 16:11:11,218 - src.ingestion.kb_writer - INFO - Metadata written for FLASH.jpeg
+2026-02-08 16:11:11,218 - src.ingestion.processor - INFO - ✅ FLASH.jpeg ingested successfully.
+2026-02-08 16:11:11,218 - src.ingestion.processor - INFO - Processing data\input_screenshots\focus_enhancer.jpeg (Attempt 1)
+2026-02-08 16:11:11,354 - src.ingestion.kb_writer - INFO - Metadata written for focus_enhancer.jpeg
+2026-02-08 16:11:11,354 - src.ingestion.processor - INFO - ✅ focus_enhancer.jpeg ingested successfully.
+2026-02-08 16:11:11,355 - src.ingestion.processor - INFO - Processing data\input_screenshots\gif_brust.jpeg (Attempt 1)
+2026-02-08 16:11:11,490 - src.ingestion.kb_writer - INFO - Metadata written for gif_brust.jpeg
+2026-02-08 16:11:11,490 - src.ingestion.processor - INFO - ✅ gif_brust.jpeg ingested successfully.
+2026-02-08 16:11:11,490 - src.ingestion.processor - INFO - Ingestion completed.

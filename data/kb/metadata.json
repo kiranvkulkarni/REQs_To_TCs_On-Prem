@@ -1,0 +1,674 @@
+[
+  {
+    "id": 1,
+    "filename": "FLASH.jpeg",
+    "feature_name": "Flash",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "en",
+      "ko"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\FLASH.jpeg",
+    "width": 1280,
+    "height": 545,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 2,
+    "filename": "FLASH.jpeg",
+    "feature_name": "Flash",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "en",
+      "ko"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\FLASH.jpeg",
+    "width": 1280,
+    "height": 545,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 3,
+    "filename": "FLASH.jpeg",
+    "feature_name": "Flash",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "en",
+      "ko"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\FLASH.jpeg",
+    "width": 1280,
+    "height": 545,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 4,
+    "filename": "FLASH.jpeg",
+    "feature_name": "Flash",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\FLASH.jpeg",
+    "width": 1280,
+    "height": 545,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 5,
+    "filename": "face_detect.jpeg",
+    "feature_name": "Face Detect",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\face_detect.jpeg",
+    "width": 1280,
+    "height": 738,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 6,
+    "filename": "FLASH.jpeg",
+    "feature_name": "Flash",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\FLASH.jpeg",
+    "width": 1280,
+    "height": 545,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 7,
+    "filename": "focus_enhancer.jpeg",
+    "feature_name": "Focus Enhancer",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\focus_enhancer.jpeg",
+    "width": 1280,
+    "height": 584,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 8,
+    "filename": "gif_brust.jpeg",
+    "feature_name": "Gif Brust",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\gif_brust.jpeg",
+    "width": 1280,
+    "height": 852,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 9,
+    "filename": "face_detect.jpeg",
+    "feature_name": "Face Detect",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\face_detect.jpeg",
+    "width": 1280,
+    "height": 738,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 10,
+    "filename": "FLASH.jpeg",
+    "feature_name": "Flash",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\FLASH.jpeg",
+    "width": 1280,
+    "height": 545,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 11,
+    "filename": "focus_enhancer.jpeg",
+    "feature_name": "Focus Enhancer",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\focus_enhancer.jpeg",
+    "width": 1280,
+    "height": 584,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  },
+  {
+    "id": 12,
+    "filename": "gif_brust.jpeg",
+    "feature_name": "Gif Brust",
+    "gestures": [
+      {
+        "type": "swipe_down",
+        "target": "shutter_button",
+        "bbox": [
+          100,
+          200,
+          150,
+          250
+        ],
+        "confidence": 0.95
+      }
+    ],
+    "conditions": [
+      "timer_enabled"
+    ],
+    "errors": [
+      "Battery too low to use flash."
+    ],
+    "languages": [
+      "ko",
+      "en"
+    ],
+    "text": [
+      {
+        "text": "Flash Off & Dim condition",
+        "lang": "en",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      },
+      {
+        "text": "플래시 꺼짐 및 비활성 상태",
+        "lang": "ko",
+        "bbox": [
+          500,
+          600,
+          600,
+          650
+        ]
+      }
+    ],
+    "image_path": "data\\input_screenshots\\gif_brust.jpeg",
+    "width": 1280,
+    "height": 852,
+    "version": 1,
+    "created_at": null,
+    "embedding": null
+  }
+]

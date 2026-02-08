@@ -1,0 +1,44 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        cd src/frontend
+        npm install
+        cd ../..
+
+    - name: Run tests
+      run: |
+        python -m unittest discover -s tests -p "test_*.py"
+
+    - name: Build Docker images
+      run: |
+        docker-compose -f docker/docker-compose.yml build
+
+    - name: Run containers
+      run: |
+        docker-compose -f docker/docker-compose.yml up -d
+        sleep 10
+        curl -f http://localhost:8000/ || exit 1
+
+    - name: Stop containers
+      run: |
+        docker-compose -f docker/docker-compose.yml down

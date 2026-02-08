@@ -1,0 +1,26 @@
+# Core
+torch>=2.0.0
+transformers>=4.35.0
+Pillow>=9.0.0
+faiss-cpu>=1.7.4
+numpy>=1.24.0
+PyYAML>=6.0.0
+requests>=2.31.0
+
+# Backend
+fastapi>=0.104.0
+uvicorn>=0.30.0
+
+# Frontend (via npm, not pip)
+# See package.json for Node.js deps
+
+# Execution
+# uiautomator2>=2.16.0     # ✅ Replaced Appium-Python-Client (removed as unused)
+# adbutils>=0.11.0         # Required by uiautomator2 (removed as unused)
+
+
+# Reporting
+prometheus-client>=0.17.0
+
+# For video recording (optional)
+# subprocess is built-in

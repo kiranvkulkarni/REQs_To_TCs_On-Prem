@@ -1,0 +1,40 @@
+# Vite
+dist/
+node_modules/
+vite.config.ts
+
+# TypeScript
+tsconfig.json
+tsconfig.node.json
+
+# React
+build/
+coverage/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# Data
+data/

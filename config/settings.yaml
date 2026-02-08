@@ -1,0 +1,163 @@
+# ———— INGESTION MODULE ————
+ingestion:
+  input_folder: "data/input_screenshots"
+  output_kb_folder: "data/kb"
+  supported_extensions: [".png", ".jpg", ".jpeg"]
+  max_retries: 3
+  ocr_enabled: false  # LayoutLM handles text extraction — no Tesseract
+  model_name: "microsoft/layoutlmv3-base"  # Can be changed to "naver-clova-ix/donut-base-finetuned-docvqa" if needed
+  device: "cuda"  # or "cpu" — auto-detect if not set
+  batch_size: 4
+  confidence_threshold: 0.7  # Only keep UI elements with confidence > 70%
+
+# ———— KB STORAGE ————
+kb:
+  vector_db: "faiss"  # or "chroma" — FAISS is default for on-prem
+  metadata_db: "sqlite"  # SQLite for structured queries
+  faiss_index_type: "FlatIP"  # Inner product for cosine similarity
+  sqlite_db_path: "data/kb/kb.sqlite"
+  faiss_index_path: "data/kb/faiss.index"
+  metadata_json_path: "data/kb/metadata.json"
+
+# ———— GENERATION MODULE ————
+generation:
+  llm_model: "llama3"           # or "mistral" — must be pulled via Ollama
+  llm_temperature: 0.3          # Low temp for deterministic output
+  llm_max_tokens: 1024
+  rule_priority: true           # If true, rule-based overrides LLM
+  prompt_template: |
+    You are a QA Analyst generating Gherkin test cases from UI metadata.
+    Input: {metadata}
+    Output: Feature and Scenarios in Gherkin syntax.
+    Rules:
+    - Use Given/When/Then.
+    - Only include what’s in metadata.
+    - Prefer rule-based logic over creativity.
+    - Include both English and Korean if languages include "ko".
+    - Do not invent features not in metadata.
+    - Use consistent terminology: "swipe down", "dimmed icon", "toast popup".
+  retry_count: 3
+  fallback_to_rule_only: true   # If LLM fails, use pure rule-based
+
+# ———— FRONTEND MODULE ————
+frontend:
+  api_base_url: "http://localhost:8000/api/v1"
+  theme: "light"               # or "dark"
+  language: "en"               # or "ko"
+  auto_refresh: true           # Auto-refresh data every 30s
+  refresh_interval: 30000      # ms
+
+
+# ———— BACKEND MODULE ————
+backend:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false               # Set to true for dev
+  cors_allowed_origins: ["http://localhost:5173"]  # React frontend
+  api_prefix: "/api/v1"
+
+# ———— EXECUTION MODULE ————
+execution:
+  test_dir: "data/exports"
+  report_dir: "data/reports"
+  screenshot_dir: "data/screenshots"   # Directory for failure screenshots
+  video_dir: "data/videos"             # Directory for test videos
+  app_package: "com.example.camera"
+  app_activity: ".MainActivity"
+  timeout: 60
+  retry_count: 2                       # Retry failed scenarios
+  parallel: true                       # Run tests in parallel
+  device_serials:                      # List of device serials for parallel execution
+    - "emulator-5554"
+    - "emulator-5556"
+    # Add more device serials as needed
+
+# ———— REJECTION REASONS ————
+rejection_reasons:
+  - "Wrong gesture interpretation"
+  - "Missing error state"
+  - "Over-creation (not in screenshot)"
+  - "Incorrect language translation"
+  - "Invalid condition logic"
+  - "UI element misidentified"
+
+# ———— EXPORT ————
+export:
+  group_by: feature             # or "screenshot"
+  file_extension: .feature
+  output_dir: data/exports
+  include_version: true         # Append version to filename
+
+# ———— REPORTING ————
+reporting:
+  format: "html"
+  template: "default"
+  include_screenshots: true
+  include_logs: true
+  include_videos: true                 # Include video links in report
+
+# ———— REPORTING MODULE ————
+reporting:
+  format: "html"
+  template: "default"
+  include_screenshots: true
+  include_logs: true
+  prometheus_enabled: true
+  prometheus_port: 9090
+  grafana_enabled: true
+  grafana_port: 3000
+  grafana_dashboard: "camera-testgen-dashboard.json"
+
+# ———— METRICS ————
+metrics:
+  interval: 60              # Seconds between metric collection
+  retention: 15d            # Prometheus data retention
+  scrape_interval: 15s      # Prometheus scrape interval
+
+# ———— ALERTING ————
+alerting:
+  enabled: true
+  email: "admin@company.com"
+  slack_webhook: ""         # Optional: Slack webhook for alerts
+  threshold: 5              # Failures to trigger alert
+
+# ———— LOGGING ————
+logging:
+  level: "INFO"
+  file: "data/logs/app.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# ———— RETRY ————
+retry:
+  max_attempts: 3
+  delay_seconds: 2
+
+groups:
+- name: camera-testgen-alerts
+  rules:
+  - alert: HighTestFailureRate
+    expr: rate(camera_testgen_tests_failed[5m]) > 0.1
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High test failure rate detected"
+      description: "More than 10% of tests failed in the last 5 minutes."
+
+  - alert: LongTestDuration
+    expr: camera_testgen_test_duration_seconds > 60
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Long test duration detected"
+      description: "Test duration exceeded 60 seconds."
+
+  - alert: NoTestsExecuted
+    expr: rate(camera_testgen_tests_total[5m]) == 0
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: "No tests executed"
+      description: "No tests have been executed in the last 10 minutes."

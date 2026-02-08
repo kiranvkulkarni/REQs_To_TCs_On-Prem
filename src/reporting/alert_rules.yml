@@ -1,0 +1,29 @@
+groups:
+- name: camera-testgen-alerts
+  rules:
+  - alert: HighTestFailureRate
+    expr: rate(camera_testgen_tests_failed[5m]) > 0.1
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High test failure rate detected"
+      description: "More than 10% of tests failed in the last 5 minutes."
+
+  - alert: LongTestDuration
+    expr: camera_testgen_test_duration_seconds > 60
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Long test duration detected"
+      description: "Test duration exceeded 60 seconds."
+
+  - alert: NoTestsExecuted
+    expr: rate(camera_testgen_tests_total[5m]) == 0
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: "No tests executed"
+      description: "No tests have been executed in the last 10 minutes."

@@ -14,9 +14,9 @@ class VideoRecorder:
         self.video_path = None
         self.process = None
 
-    def start(self):
+    def start(self) -> None:
         """
-        Start video recording
+        Start video recording.
         """
         try:
             self.video_dir.mkdir(parents=True, exist_ok=True)
@@ -36,9 +36,9 @@ class VideoRecorder:
         except Exception as e:
             logger.error(f"Failed to start video recording: {e}")
 
-    def stop(self):
+    def stop(self) -> None:
         """
-        Stop video recording
+        Stop video recording.
         """
         if self.process:
             try:

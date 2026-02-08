@@ -4,13 +4,16 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def capture_screenshot(device, step_name: str, screenshot_dir: Path, scenario_name: str):
+def capture_screenshot(device, step_name: str, screenshot_dir: Path, scenario_name: str) -> str:
     """
-    Capture screenshot on failure
-    :param device: uiautomator2 device instance
-    :param step_name: Name of the step (for filename)
-    :param screenshot_dir: Directory to save screenshots
-    :param scenario_name: Name of the scenario (for folder)
+    Capture screenshot on failure.
+    Args:
+        device: uiautomator2 device instance.
+        step_name (str): Name of the step (for filename).
+        screenshot_dir (Path): Directory to save screenshots.
+        scenario_name (str): Name of the scenario (for folder).
+    Returns:
+        str: Path to the saved screenshot file, or None if failed.
     """
     try:
         screenshot_dir.mkdir(parents=True, exist_ok=True)

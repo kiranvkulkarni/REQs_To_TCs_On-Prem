@@ -14,7 +14,11 @@ class LLMAdapter:
 
     def generate(self, metadata: Dict) -> str:
         """
-        Generate Gherkin using Ollama LLM
+        Generate Gherkin using Ollama LLM.
+        Args:
+            metadata (Dict): Screenshot metadata.
+        Returns:
+            str: Gherkin formatted test cases from LLM.
         """
         prompt = self._build_prompt(metadata)
         payload = {
@@ -36,7 +40,11 @@ class LLMAdapter:
 
     def _build_prompt(self, metadata: Dict) -> str:
         """
-        Build prompt using template from config
+        Build prompt using template from config.
+        Args:
+            metadata (Dict): Screenshot metadata.
+        Returns:
+            str: Prompt string for LLM.
         """
         template = self.config["generation"]["prompt_template"]
         metadata_str = json.dumps(metadata, ensure_ascii=False, indent=2)

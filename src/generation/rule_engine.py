@@ -9,7 +9,12 @@ class RuleEngine:
 
     def generate(self, metadata: Dict, fallback: bool = False) -> List[Dict]:
         """
-        Generate Gherkin scenarios using rule-based logic
+        Generate Gherkin scenarios using rule-based logic.
+        Args:
+            metadata (Dict): Screenshot metadata.
+            fallback (bool): If true, fallback to default scenario.
+        Returns:
+            List[Dict]: List of scenario dicts.
         """
         scenarios = []
 
@@ -47,7 +52,12 @@ class RuleEngine:
 
     def _generate_gesture_scenario(self, metadata: Dict, gesture: Dict) -> Dict:
         """
-        Generate scenario for gesture (e.g., swipe down)
+        Generate scenario for gesture (e.g., swipe down).
+        Args:
+            metadata (Dict): Screenshot metadata.
+            gesture (Dict): Gesture dict.
+        Returns:
+            Dict: Scenario dict.
         """
         feature_name = metadata["feature_name"]
         gesture_type = gesture["type"]
@@ -72,7 +82,12 @@ class RuleEngine:
 
     def _generate_condition_scenario(self, metadata: Dict, condition: str) -> Dict:
         """
-        Generate scenario for condition (e.g., timer_enabled)
+        Generate scenario for condition (e.g., timer_enabled).
+        Args:
+            metadata (Dict): Screenshot metadata.
+            condition (str): Condition name.
+        Returns:
+            Dict: Scenario dict.
         """
         feature_name = metadata["feature_name"]
 
@@ -93,7 +108,12 @@ class RuleEngine:
 
     def _generate_error_scenario(self, metadata: Dict, error: str) -> Dict:
         """
-        Generate scenario for error (e.g., storage_full)
+        Generate scenario for error (e.g., storage_full).
+        Args:
+            metadata (Dict): Screenshot metadata.
+            error (str): Error message.
+        Returns:
+            Dict: Scenario dict.
         """
         feature_name = metadata["feature_name"]
 
@@ -114,7 +134,11 @@ class RuleEngine:
 
     def _generate_default_scenario(self, metadata: Dict) -> Dict:
         """
-        Generate default scenario if no specific rules apply
+        Generate default scenario if no specific rules apply.
+        Args:
+            metadata (Dict): Screenshot metadata.
+        Returns:
+            Dict: Scenario dict.
         """
         feature_name = metadata["feature_name"]
 

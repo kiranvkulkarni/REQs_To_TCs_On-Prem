@@ -20,7 +20,7 @@ class TestExecutor:
         self.parallel = config["execution"]["parallel"]
         self.device_serials = config["execution"].get("device_serials", [])  # List of device serials
 
-    def run(self):
+    def run(self) -> list:
         logger.info("Starting test execution...")
         feature_files = self._get_feature_files()
         results = []
@@ -45,7 +45,12 @@ class TestExecutor:
 
     def _execute_feature(self, feature_file: Path, device_serial: str = None) -> Dict:
         """
-        Execute a single feature file
+        Execute a single feature file.
+        Args:
+            feature_file (Path): Path to the feature file.
+            device_serial (str, optional): Device serial for execution.
+        Returns:
+            Dict: Execution result dict.
         """
         logger.info(f"Executing {feature_file.name} on device {device_serial or 'default'}")
         try:

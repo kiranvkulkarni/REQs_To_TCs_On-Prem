@@ -16,8 +16,12 @@ class GherkinGenerator:
 
     def generate(self, metadata: Dict) -> str:
         """
-        Generate Gherkin test cases from metadata
-        Priority: Rule-Based > LLM > Fallback to Rule-Based
+        Generate Gherkin test cases from metadata.
+        Priority: Rule-Based > LLM > Fallback to Rule-Based.
+        Args:
+            metadata (Dict): Screenshot metadata.
+        Returns:
+            str: Gherkin formatted test cases.
         """
         logger.info(f"Generating Gherkin for {metadata['filename']}")
 

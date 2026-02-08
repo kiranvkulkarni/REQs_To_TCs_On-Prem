@@ -11,7 +11,12 @@ class ReportGenerator:
 
     def generate(self, feature: Dict, execution_result: Dict) -> Path:
         """
-        Generate report in configured format
+        Generate report in configured format.
+        Args:
+            feature (Dict): Feature data.
+            execution_result (Dict): Test execution result.
+        Returns:
+            Path: Path to the generated report file.
         """
         report_name = f"{feature['name'].replace(' ', '_')}_report"
         if self.config["reporting"]["format"] == "html":
@@ -25,7 +30,7 @@ class ReportGenerator:
 
     def _generate_html(self, feature: Dict, execution_result: Dict, report_name: str) -> Path:
         """
-        Generate HTML report with screenshots and videos
+        Generate HTML report with screenshots and videos.
         """
         html_content = f"""
         <!DOCTYPE html>
@@ -83,7 +88,7 @@ class ReportGenerator:
 
     def _generate_pdf(self, feature: Dict, execution_result: Dict, report_name: str) -> Path:
         """
-        Generate PDF report (placeholder — use weasyprint or similar in real code)
+        Generate PDF report (placeholder — use weasyprint or similar in real code).
         """
         report_path = self.report_dir / f"{report_name}.pdf"
         with open(report_path, "w", encoding="utf-8") as f:
@@ -92,7 +97,7 @@ class ReportGenerator:
 
     def _generate_json(self, feature: Dict, execution_result: Dict, report_name: str) -> Path:
         """
-        Generate JSON report
+        Generate JSON report.
         """
         report_data = {
             "feature": feature["name"],

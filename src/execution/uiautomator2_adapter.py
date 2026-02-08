@@ -23,7 +23,11 @@ Path("data/videos")
 
     def execute(self, feature: Dict) -> Dict:
         """
-        Execute tests on Android device/emulator using uiautomator2
+        Execute tests on Android device/emulator using uiautomator2.
+        Args:
+            feature (Dict): Feature dict with scenarios.
+        Returns:
+            Dict: Execution result dict.
         """
         start_time = time.time()
         status = "passed"
@@ -62,7 +66,7 @@ Path("data/videos")
                 "videos": videos
             }
 
-    def _setup_device(self):
+    def _setup_device(self) -> None:
         """
         Connect to Android device/emulator
         """
@@ -72,7 +76,7 @@ Path("data/videos")
         self.device.healthcheck()
         logger.info(f"Connected to device: {self.device.info['brand']} {self.device.info['model']}")
 
-    def _teardown_device(self):
+    def _teardown_device(self) -> None:
         """
         Teardown device connection
         """
@@ -83,7 +87,11 @@ Path("data/videos")
 
     def _execute_scenario(self, scenario: Dict) -> str:
         """
-        Execute a single scenario with retry and video recording
+        Execute a single scenario with retry and video recording.
+        Args:
+            scenario (Dict): Scenario dict.
+        Returns:
+            str: 'passed' or 'failed'.
         """
         scenario_name = scenario["name"].replace(' ', '_').replace(':', '_')
 
@@ -118,9 +126,14 @@ Path("data/videos")
             # Stop video recording
             video_recorder.stop()
 
-    def _execute_step(self, step: str, scenario_name: str, screenshot_dir: Path, video_recorder: VideoRecorder):
+    def _execute_step(self, step: str, scenario_name: str, screenshot_dir: Path, video_recorder: VideoRecorder) -> None:
         """
-        Execute a single step with retry and screenshot on failure
+        Execute a single step with retry and screenshot on failure.
+        Args:
+            step (str): Step text.
+            scenario_name (str): Scenario name.
+            screenshot_dir (Path): Directory for screenshots.
+            video_recorder (VideoRecorder): Video recorder instance.
         """
         step_name = step.replace(' ', '_').replace(':', '_')[:50]  # Limit filename length
 
@@ -192,9 +205,14 @@ self._on_failure(step, scenario_name, screenshot_dir, video_recorder))
 
         execute_step()
 
-    def _on_failure(self, step: str, scenario_name: str, screenshot_dir: Path, video_recorder: VideoRecorder):
+    def _on_failure(self, step: str, scenario_name: str, screenshot_dir: Path, video_recorder: VideoRecorder) -> None:
         """
-        Called on step failure — capture screenshot and log
+        Called on step failure — capture screenshot and log.
+        Args:
+            step (str): Step text.
+            scenario_name (str): Scenario name.
+            screenshot_dir (Path): Directory for screenshots.
+            video_recorder (VideoRecorder): Video recorder instance.
         """
         logger.warning(f"Step failed: {step}")
         capture_screenshot(self.device, step, screenshot_dir, scenario_name)

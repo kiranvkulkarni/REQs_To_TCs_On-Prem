@@ -8,7 +8,12 @@ class MetadataBuilder:
 
     def build(self, screenshot_path: str, layout_data: dict) -> dict:
         """
-        Build structured metadata from LayoutLM output
+        Build structured metadata from Ollama output.
+        Args:
+            screenshot_path (str): Path to the screenshot file.
+            layout_data (dict): Parsed output from Ollama vision model.
+        Returns:
+            dict: Structured metadata for KBWriter.
         """
         # Convert string to Path if needed
         if isinstance(screenshot_path, str):
@@ -44,32 +49,3 @@ class MetadataBuilder:
         # Extract feature name from filename (e.g., "flash_mode.png" → "Flash Mode")
         name = filename.split(".")[0].replace("_", " ").title()
         return name
-
-    def _extract_gestures(self, ui_elements: List[dict]) -> List[dict]:
-        return [
-            {
-                "type": elem["subtype"],
-                "target": elem["target"],
-                "bbox": elem["bbox"],
-                "confidence": elem["confidence"]
-            }
-            for elem in ui_elements
-            if elem["type"] == "gesture"
-        ]
-
-    def _extract_conditions(self, ui_elements: List[dict]) -> List[str]:
-        return [
-            elem["name"]
-            for elem in ui_elements
-            if elem["type"] == "condition"
-        ]
-
-    def _extract_errors(self, ui_elements: List[dict]) -> List[str]:
-        return [
-            elem["message"]
-            for elem in ui_elements
-            if elem["type"] == "error"
-        ]
-
-    def _extract_languages(self, text: List[dict]) -> List[str]:
-        return list(set([t["lang"] for t in text]))

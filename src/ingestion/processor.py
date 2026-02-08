@@ -3,7 +3,7 @@ import logging
 from pathlib import Path
 from typing import List
 
-from .layoutlm_analyzer import LayoutLMAnalyzer
+from .layoutlm_analyzer import process_image
 from .metadata_builder import MetadataBuilder
 from .kb_writer import KBWriter
 
@@ -16,10 +16,10 @@ class ScreenshotIngestor:
         self.supported_exts = set(config["ingestion"]["supported_extensions"])
         self.max_retries = config["ingestion"]["max_retries"]
         self.kb_writer = KBWriter(config)
-        self.layoutlm = LayoutLMAnalyzer(config)
+        # Removed legacy LayoutLMAnalyzer reference
         self.metadata_builder = MetadataBuilder(config)
 
-    def run(self):
+    def run(self) -> None:
         logger.info(f"Starting ingestion from {self.input_folder}")
         screenshots = self._get_screenshots()
         for screenshot in screenshots:
@@ -34,14 +34,14 @@ class ScreenshotIngestor:
         logger.info(f"Found {len(screenshots)} screenshots.")
         return screenshots
 
-    def _process_screenshot(self, screenshot_path: str):
+    def _process_screenshot(self, screenshot_path: str) -> None:
         # Convert string to Path if needed
         if isinstance(screenshot_path, str):
             screenshot_path = Path(screenshot_path)
         for attempt in range(1, self.max_retries + 1):
             try:
                 logger.info(f"Processing {screenshot_path} (Attempt {attempt})")
-                layout_data = self.layoutlm.analyze(screenshot_path)
+                layout_data = process_image(str(screenshot_path))
                 metadata = self.metadata_builder.build(screenshot_path, layout_data)
                 self.kb_writer.write(metadata)
                 logger.info(f"✅ {screenshot_path.name} ingested successfully.")

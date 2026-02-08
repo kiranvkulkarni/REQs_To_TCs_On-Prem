@@ -8,7 +8,11 @@ class CucumberAdapter:
 
     def parse(self, feature_file: Path) -> Dict:
         """
-        Parse .feature file into structured data
+        Parse .feature file into structured data.
+        Args:
+            feature_file (Path): Path to the .feature file.
+        Returns:
+            Dict: Parsed feature structure.
         """
         content = feature_file.read_text(encoding="utf-8")
         lines = content.splitlines()

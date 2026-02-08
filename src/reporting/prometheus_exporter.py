@@ -17,16 +17,20 @@ class PrometheusExporter:
         self.port = config["reporting"]["prometheus_port"]
         self.metrics = {}
 
-    def start(self):
+    def start(self) -> None:
         """
-        Start Prometheus metrics server
+        Start Prometheus metrics server.
         """
         start_http_server(self.port)
         logger.info(f"Prometheus metrics server started on port {self.port}")
 
-    def record_test_result(self, feature: str, status: str, duration: float):
+    def record_test_result(self, feature: str, status: str, duration: float) -> None:
         """
-        Record test result metrics
+        Record test result metrics.
+        Args:
+            feature (str): Feature name.
+            status (str): Test status.
+            duration (float): Test duration.
         """
         TESTS_TOTAL.inc()
         if status == "passed":
@@ -39,7 +43,9 @@ class PrometheusExporter:
 
     def get_metrics(self) -> dict:
         """
-        Get current metrics
+        Get current metrics.
+        Returns:
+            dict: Dictionary of current metrics.
         """
         return {
             "tests_total": TESTS_TOTAL._value.get(),

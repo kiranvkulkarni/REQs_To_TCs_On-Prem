@@ -7,7 +7,12 @@ class GherkinFormatter:
 
     def format(self, metadata: Dict, scenarios: List[Dict]) -> str:
         """
-        Format scenarios into Gherkin syntax
+        Format scenarios into Gherkin syntax.
+        Args:
+            metadata (Dict): Screenshot metadata.
+            scenarios (List[Dict]): List of scenario dicts.
+        Returns:
+            str: Gherkin formatted string.
         """
         feature_name = metadata["feature_name"]
         filename = metadata["filename"]

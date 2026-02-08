@@ -4,12 +4,15 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def retry(max_attempts: int = 3, delay_seconds: int = 2, on_failure=None):
+def retry(max_attempts: int = 3, delay_seconds: int = 2, on_failure=None) -> callable:
     """
-    Retry decorator for test scenarios
-    :param max_attempts: Number of retry attempts
-    :param delay_seconds: Delay between retries
-    :param on_failure: Callback function to run on each failure (e.g., capture screenshot)
+    Retry decorator for test scenarios.
+    Args:
+        max_attempts (int): Number of retry attempts.
+        delay_seconds (int): Delay between retries.
+        on_failure (callable): Callback function to run on each failure (e.g., capture screenshot).
+    Returns:
+        callable: Decorator for retry logic.
     """
     def decorator(func):
         @wraps(func)

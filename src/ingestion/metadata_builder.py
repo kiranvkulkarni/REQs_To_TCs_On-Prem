@@ -21,10 +21,88 @@ class MetadataBuilder:
         filename = screenshot_path.name
         feature_name = self._extract_feature_name(filename)
 
-        gestures = self._extract_gestures(layout_data["ui_elements"])
-        conditions = self._extract_conditions(layout_data["ui_elements"])
-        errors = self._extract_errors(layout_data["ui_elements"])
-        languages = self._extract_languages(layout_data["text"])
+
+        import logging
+        # Validate layout_data is a dict
+        if not isinstance(layout_data, dict):
+            logging.error("layout_data is not a dict. Returning minimal metadata.")
+            return {
+                "id": None,
+                "filename": screenshot_path.name,
+                "feature_name": self._extract_feature_name(screenshot_path.name),
+                "gestures": [],
+                "conditions": [],
+                "errors": [],
+                "languages": [],
+                "text": [],
+                "image_path": str(screenshot_path),
+                "width": None,
+                "height": None,
+                "version": 1,
+                "created_at": None,
+                "embedding": None
+            }
+
+        # Try to extract UI elements from multiple possible keys
+        ui_elements = layout_data.get("ui_elements")
+        if ui_elements is None:
+            # Try to extract from 'screens' or 'transitions' if present (Ollama output)
+            if "screens" in layout_data and isinstance(layout_data["screens"], list):
+                ui_elements = layout_data["screens"]
+                logging.warning("layout_data missing 'ui_elements' key. Using 'screens' as fallback.")
+            elif "transitions" in layout_data and isinstance(layout_data["transitions"], list):
+                ui_elements = layout_data["transitions"]
+                logging.warning("layout_data missing 'ui_elements' key. Using 'transitions' as fallback.")
+            else:
+                logging.warning("layout_data missing 'ui_elements', 'screens', and 'transitions' keys. Defaulting to empty list.")
+                ui_elements = []
+
+        text_elements = layout_data.get("text")
+        if text_elements is None:
+            # Try to extract from 'screens' if present (Ollama output)
+            if "screens" in layout_data and isinstance(layout_data["screens"], list):
+                text_elements = []
+                for screen in layout_data["screens"]:
+                    if "text_content" in screen:
+                        for txt in screen["text_content"]:
+                            text_elements.append({"text": txt, "lang": "en"})
+                logging.warning("layout_data missing 'text' key. Extracted from 'screens' as fallback.")
+            else:
+                logging.warning("layout_data missing both 'text' and 'screens' keys. Defaulting to empty list.")
+                text_elements = []
+
+        # Validate width/height
+        width = layout_data.get("width")
+        height = layout_data.get("height")
+        if width is None and "screens" in layout_data and isinstance(layout_data["screens"], list):
+            # Try to extract from first screen
+            first_screen = layout_data["screens"][0] if layout_data["screens"] else {}
+            width = first_screen.get("width")
+            height = first_screen.get("height")
+
+        gestures = self._extract_gestures(ui_elements)
+        conditions = self._extract_conditions(ui_elements)
+        errors = self._extract_errors(ui_elements)
+        languages = self._extract_languages(text_elements)
+
+        metadata = {
+            "id": None,  # Will be set by KBWriter
+            "filename": screenshot_path.name,
+            "feature_name": self._extract_feature_name(screenshot_path.name),
+            "gestures": gestures,
+            "conditions": conditions,
+            "errors": errors,
+            "languages": languages,
+            "text": text_elements,
+            "image_path": str(screenshot_path),
+            "width": width,
+            "height": height,
+            "version": 1,
+            "created_at": None,  # Set by KBWriter
+            "embedding": None  # Set by KBWriter
+        }
+
+        return metadata
 
         metadata = {
             "id": None,  # Will be set by KBWriter
@@ -34,10 +112,10 @@ class MetadataBuilder:
             "conditions": conditions,
             "errors": errors,
             "languages": languages,
-            "text": layout_data["text"],
+            "text": text_elements,
             "image_path": str(screenshot_path),
-            "width": layout_data["width"],
-            "height": layout_data["height"],
+            "width": layout_data.get("width"),
+            "height": layout_data.get("height"),
             "version": 1,
             "created_at": None,  # Set by KBWriter
             "embedding": None  # Set by KBWriter
